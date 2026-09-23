@@ -4,9 +4,10 @@ const templateService = require('./templateService')
 function getAllLandings() {
   return db.landings.map(landing => ({
     ...landing,
-    leadCount: 0
+    leadCount:  db.leads.filter(lead => lead.landingId === landing.id).length //CREO QUE ESTE ES EL CONTADOR QUE PIDEN
   }))
 }
+
 function getLeadsSummary() {
   return db.landings.map(landing => ({
     id: landing.id,
@@ -65,21 +66,5 @@ function getLeadsByLanding(landingId) {
   return db.leads.filter(l => l.landingId === Number(landingId))
 }
 
-function createLead(landingId, data) {
-  getLandingById(landingId)
 
-  const lead = {
-    id: db.nextLeadId++,
-    landingId: Number(landingId),
-    name: data.name,
-    email: data.email,
-    phone: data.phone || null,
-    message: data.message || null,
-    createdAt: new Date().toISOString()
-  }
-
-  db.leads.push(lead)
-  return lead
-}
-
-module.exports = { getAllLandings, getLandingById, createLanding, getLandingPreview, getLeadsByLanding, createLead,getLeadsSummary }
+module.exports = { getAllLandings, getLandingById, createLanding, getLandingPreview, getLeadsByLanding, getLeadsSummary }

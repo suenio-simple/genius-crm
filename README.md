@@ -24,8 +24,10 @@ SueñoSimple necesita landings distintas según el momento del año: una para el
 | `GET /api/landings/:id` | Consulta el estado y los campos de una landing específica antes de aprobarla. |
 | `POST /api/landings` | El equipo crea una nueva landing para SueñoSimple en base a un template existente. |
 | `GET /api/landings/:id/preview` | Previsualiza la landing renderizada como HTML antes de publicarla. Permite revisar que el contenido se ve correctamente sin necesitar un frontend separado. |
-| `GET /api/landings/:id/leads` | El equipo de ventas consulta los leads captados por una landing para hacer seguimiento. |
-| `POST /api/landings/:id/leads` | Simula el envío del formulario de contacto de la landing (usado por QA para verificar la captación). |
+| `GET /api/landings/:id/leads` | ELIMINADO |
+| `POST /api/landings/:id/leads` | ELIMINADO |
+| `GET /api/leads` | El equipo de ventas consulta los leads captados por una landing para hacer seguimiento. |
+| `POST /api/leads/` | Simula el envío del formulario de contacto de la landing (usado por QA para verificar la captación). |
 
 ## Requisitos
 
@@ -108,8 +110,10 @@ La carpeta `templates/` contiene ejemplos HTML renderizados de cada tipo. Abrirl
 | GET | `/api/landings/:id` | Obtener landing por ID |
 | POST | `/api/landings` | Crear landing desde template |
 | GET | `/api/landings/:id/preview` | Previsualizar landing como HTML |
-| GET | `/api/landings/:id/leads` | Listar leads de la landing |
-| POST | `/api/landings/:id/leads` | Registrar un lead |
+| GET | `/api/landings/:id/leads` | Listar leads de la landing | OBSOLETO
+| POST | `/api/landings/:id/leads` | Registrar un lead | OBSOLETO
+| `GET /api/leads` | Listar leads de la landing |
+| `POST /api/leads/` | Registrar un lead |
 
 Los siguientes endpoints están pendientes de implementación:
 

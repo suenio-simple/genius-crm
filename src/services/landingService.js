@@ -4,7 +4,7 @@ const templateService = require('./templateService')
 function getAllLandings() {
   return db.landings.map(landing => ({
     ...landing,
-    leadCount:  db.leads.filter(lead => lead.landingId === landing.id).length //CREO QUE ESTE ES EL CONTADOR QUE PIDEN
+    leadCount:  db.leads.filter(lead => lead.landingId === landing.id).length
   }))
 }
 
@@ -61,10 +61,10 @@ function getLandingPreview(id) {
   return html
 }
 
-function getLeadsByLanding(landingId) {
+/*function getLeadsByLanding(landingId) {
   getLandingById(landingId)
   return db.leads.filter(l => l.landingId === Number(landingId))
-}
+}*/
 
 
-module.exports = { getAllLandings, getLandingById, createLanding, getLandingPreview, getLeadsByLanding, getLeadsSummary }
+module.exports = { getAllLandings, getLandingById, createLanding, getLandingPreview, getLeadsSummary }

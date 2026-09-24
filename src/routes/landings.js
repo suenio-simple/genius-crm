@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const landingService = require('../services/landingService')
+const leadService = require('../services/leadService')
 const validateLead = require('../middleware/validateLead')
 
 
@@ -183,7 +184,7 @@ router.get('/:id/preview', (req, res, next) => {
  */
 router.get('/:id/leads', (req, res, next) => {
   try {
-    res.json(landingService.getLeadsByLanding(req.params.id))
+    res.json(leadService.getLeadsByLanding(req.params.id))
   } catch (err) {
     next(err)
   }
@@ -229,7 +230,7 @@ router.get('/:id/leads', (req, res, next) => {
  */
 router.post('/:id/leads', validateLead, (req, res, next) => {
   try {
-    const lead = landingService.createLead(req.params.id, req.body)
+    const lead = leadService.createLead(req.params.id, req.body)
     res.status(201).json(lead)
   } catch (err) {
     next(err)
